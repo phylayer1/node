@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     network_mode: host
     entrypoint: /init-erigon.sh
-    port:
+    ports:
       - 8545:8545 
     volumes:
       - ./data:/data
