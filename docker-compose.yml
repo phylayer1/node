@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     network_mode: host
     entrypoint: /init-erigon.sh
+    port:
+      - 8545:8545 
     volumes:
       - ./data:/data
       - ./config:/config
@@ -17,7 +19,7 @@ services:
       - --ws
       - --http
       - --http.addr=0.0.0.0
-      - --http.api=engine,net,eth 
+      - --http.api=eth,engine,erigon,web3,net,debug,trace,txpool,ots
       - --authrpc.addr=0.0.0.0
       - --authrpc.port=8551
       - --authrpc.vhosts=*
@@ -45,4 +47,5 @@ services:
       - --target-peers=5
 #      - --enr-address=xx.xx.xx.xx
       - --enr-udp-port=9000
-      - --enr-tcp-port=900
+      - --enr-tcp-port=9000
+
